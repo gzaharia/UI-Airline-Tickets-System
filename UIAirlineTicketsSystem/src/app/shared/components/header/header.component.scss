@@ -6,7 +6,7 @@
   background: $header-color;
   color: white;
 
-  a {
+  .title {
     font-size: 40px;
     text-decoration: none;
     color: white;
@@ -44,18 +44,9 @@
           }
         }
       }
+
     }
   }
-
-  &.dropdown-item {
-    padding: 10px !important;
-  }
-
-  &.dropdown-menu {
-    min-width: auto !important;
-    transform: translate3d(8px, 27px, 0) !important;
-  }
-
 }
 
 
