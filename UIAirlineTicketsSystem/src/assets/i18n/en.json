@@ -1,0 +1,10 @@
+{
+  "header": {
+    "nav": {
+      "home": "Home",
+      "service": "Service",
+      "about": "About",
+      "contact": "Contact"
+    }
+  }
+}
