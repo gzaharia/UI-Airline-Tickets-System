@@ -1,0 +1,10 @@
+{
+  "header": {
+    "nav": {
+      "home": "Acasă",
+      "service": "Servicii",
+      "about": "Despre",
+      "contact": "Contacte"
+    }
+  }
+}
