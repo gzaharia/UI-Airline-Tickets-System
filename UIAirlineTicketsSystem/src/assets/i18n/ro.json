@@ -7,5 +7,18 @@
       "contact": "Contacte"
     }
   },
-  "login": "Autentificare"
+  "login": "Autentificare",
+  "footer": {
+    "address": "Chisinau Moldova",
+    "phone": "Sună-ne",
+    "question": "Întrebări",
+    "links": "Link-uri utile",
+    "terms": "",
+    "questions": {
+      "0": "CUM SA REZERV UN BILET DE AVION?",
+      "1": "ANULAREA REZERVARII BILETULUI?",
+      "2": "REGULAMENTUL DESPRE FURNIZAREA SERVICIILOR",
+      "3": "POLITICA DE CONFIDENTIALITATE"
+    }
+  }
 }

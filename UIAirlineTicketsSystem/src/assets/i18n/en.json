@@ -7,5 +7,18 @@
       "contact": "Contact"
     }
   },
-  "login": "Login"
+  "login": "Login",
+  "footer": {
+    "address": "Chisinau Moldova",
+    "phone": "Call us",
+    "question": "questions",
+    "links": "Useful links",
+    "terms": "terms",
+    "questions": {
+      "0": "HOW TO RESERVE A PLANE TICKET?",
+      "1": "CANCELLATION OF THE TICKET RESERVATION?",
+      "2": "REGULATION ON THE PROVISION OF SERVICES",
+      "3": "PRIVACY POLICY"
+    }
+  }
 }
