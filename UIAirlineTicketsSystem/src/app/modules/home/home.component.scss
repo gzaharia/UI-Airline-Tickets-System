@@ -4,9 +4,17 @@ main {
   width: 100%;
   height: 100vh;
 
-  img {
+  .flight-image {
+    background-image: url('../../../assets/images/home-image.png');
     width: 100%;
     height: 100vh;
-    object-fit: cover;
+    background-position: center;
+    background-size: cover;
   }
+
+  //img {
+  //  width: 100%;
+  //  height: 100vh;
+  //  object-fit: cover;
+  //}
 }
