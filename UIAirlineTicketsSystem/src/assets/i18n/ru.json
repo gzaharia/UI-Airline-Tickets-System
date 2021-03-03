@@ -20,5 +20,23 @@
       "2": "ПОЛОЖЕНИЕ О ПРЕДОСТАВЛЕНИИ УСЛУГ",
       "3": "ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ "
     }
+  },
+  "flight-search": {
+    "flight-question": "КУДА BЫ ХОТЕЛИ",
+    "flight-question-bold": "ПОЙТИ?",
+    "from": "Откуда",
+    "to": "Куда",
+    "departure-date": "Дата Вылета",
+    "return-date": "Дата Возврата",
+    "passengers": "Пассажиры",
+    "one-way": "В одну сторону",
+    "round-trip": "Туда и обратно",
+    "book-now": "Поиск рейсов",
+    "placeholder": {
+      "from": "Chiinau",
+      "to": "Berlin, Germany",
+      "date": "01-01-2021",
+      "passenger": "1 Adult"
+    }
   }
 }

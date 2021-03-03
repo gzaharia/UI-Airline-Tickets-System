@@ -5,10 +5,11 @@ import {HeaderComponent} from './components/header/header.component';
 import {TransformPipe} from './pipes/transform.pipe';
 import {RouterModule} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
+import { SearchFlightComponent } from './components/search-flight/search-flight.component';
 
 
 @NgModule({
-  declarations: [FooterComponent, HeaderComponent, TransformPipe],
+  declarations: [FooterComponent, HeaderComponent, TransformPipe, SearchFlightComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -17,7 +18,8 @@ import {TranslateModule} from '@ngx-translate/core';
   exports: [
     FooterComponent,
     HeaderComponent,
-    TransformPipe
+    TransformPipe,
+    SearchFlightComponent
   ]
 })
 export class SharedModule {
