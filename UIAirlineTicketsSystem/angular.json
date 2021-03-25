@@ -28,12 +28,17 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/primeng/resources/themes/saga-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css"
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",
               "./node_modules/popper.js/dist/umd/popper.min.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "./node_modules/quill/dist/quill.core.js",
+              "./node_modules/chart.js/dist/Chart.js"
             ]
           },
           "configurations": {
@@ -133,5 +138,8 @@
       }
     }
   },
-  "defaultProject": "UIAirlineTicketsSystem"
+  "defaultProject": "UIAirlineTicketsSystem",
+  "cli": {
+    "analytics": "fb8d50c8-f09a-482d-b4f0-6e1a7f02d758"
+  }
 }
