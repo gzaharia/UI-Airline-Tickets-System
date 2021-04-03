@@ -5,28 +5,34 @@ import {HeaderComponent} from './components/header/header.component';
 import {TransformPipe} from './pipes/transform.pipe';
 import {RouterModule} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
-import { SearchFlightComponent } from './components/search-flight/search-flight.component';
-import { BasicCalendarComponent } from './components/basic-calendar/basic-calendar.component';
+import {SearchFlightComponent} from './components/search-flight/search-flight.component';
+import {BasicCalendarComponent} from './components/basic-calendar/basic-calendar.component';
 import {CalendarModule} from 'primeng/calendar';
-import { SelectDateModalComponent } from './components/select-date-modal/select-date-modal.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {SelectDateModalComponent} from './components/select-date-modal/select-date-modal.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {SidebarModule} from 'primeng/sidebar';
+import { LogInModalComponent } from './modals/log-in-modal/log-in-modal.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
-  declarations: [FooterComponent, HeaderComponent, TransformPipe, SearchFlightComponent, BasicCalendarComponent, SelectDateModalComponent],
+  declarations: [FooterComponent, HeaderComponent, TransformPipe, SearchFlightComponent, BasicCalendarComponent, SelectDateModalComponent, LogInModalComponent],
   imports: [
     CommonModule,
     RouterModule,
-    TranslateModule, 
+    TranslateModule,
     CalendarModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    SidebarModule,
+    MatDialogModule
   ],
   exports: [
     FooterComponent,
     HeaderComponent,
     TransformPipe,
-    SearchFlightComponent
+    SearchFlightComponent,
+    LogInModalComponent
   ],
   schemas: [
     NO_ERRORS_SCHEMA
