@@ -7,7 +7,7 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-  public now: Date = new Date()
+  public now: Date = new Date();
 
   constructor(public translateService: TranslateService) { }
 

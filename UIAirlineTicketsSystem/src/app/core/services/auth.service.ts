@@ -5,7 +5,6 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
 import {map} from 'rxjs/operators';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -17,6 +16,8 @@ export class AuthService {
   private currentUserSubject: BehaviorSubject<UserModel>;
   public userId: BehaviorSubject<any>;
   public getUserId: Observable<any>;
+  isLoggedIn = new BehaviorSubject<boolean>(false);
+  private tokenExpiratationTimer: any;
 
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<UserModel>(JSON.parse(localStorage.getItem('currentUser')));
@@ -40,6 +41,8 @@ export class AuthService {
         localStorage.setItem('currentUser', JSON.stringify(user));
         localStorage.setItem('jwt_token', JSON.stringify(user.token));
         this.currentUserSubject.next(user);
+        this.isLoggedIn.next(true);
+        this.autoLogout(1000 * 600);
         // this.getUserByUsername();
         return user;
       }));
@@ -48,8 +51,19 @@ export class AuthService {
   /** logout    */
   public logout(): void {
     localStorage.removeItem('currentUser');
-    localStorage.removeItem('jwt_token ');
+    localStorage.removeItem('jwt_token');
     this.currentUserSubject.next(null);
+    this.isLoggedIn.next(false);
+    if (this.tokenExpiratationTimer) {
+      clearTimeout(this.tokenExpiratationTimer);
+    }
+    this.tokenExpiratationTimer = null;
+  }
+
+  private autoLogout(expirationDuration: number): void {
+    this.tokenExpiratationTimer = setTimeout(() => {
+      this.logout();
+    }, expirationDuration);
   }
 
   // /** get user by username   */

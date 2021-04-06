@@ -1,8 +1,9 @@
 enum HomeRoutes {
   home = 'home',
-  service = 'service',
+  services = 'services',
   about = 'about',
-  contact = 'contact',
+  contacts = 'contacts',
+  faq = 'faq'
 }
 
 export type AirlineRoutes = typeof AirlineRoutes;
