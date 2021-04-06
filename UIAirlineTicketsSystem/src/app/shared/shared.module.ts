@@ -12,11 +12,13 @@ import {SelectDateModalComponent} from './components/select-date-modal/select-da
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SidebarModule} from 'primeng/sidebar';
 import { LogInModalComponent } from './modals/log-in-modal/log-in-modal.component';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.component';
 
 
 @NgModule({
-  declarations: [FooterComponent, HeaderComponent, TransformPipe, SearchFlightComponent, BasicCalendarComponent, SelectDateModalComponent, LogInModalComponent],
+  declarations: [FooterComponent, HeaderComponent, TransformPipe, SearchFlightComponent, BasicCalendarComponent, SelectDateModalComponent, LogInModalComponent, AdminSidebarComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -25,7 +27,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     ReactiveFormsModule,
     FormsModule,
     SidebarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule
   ],
   exports: [
     FooterComponent,
@@ -34,6 +37,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     SearchFlightComponent,
     LogInModalComponent
   ],
+  entryComponents: [LogInModalComponent],
+  providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
   schemas: [
     NO_ERRORS_SCHEMA
   ]

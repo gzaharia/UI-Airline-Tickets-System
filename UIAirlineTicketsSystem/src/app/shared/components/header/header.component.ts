@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {NavModel} from '../../../core/models/navModel';
 import {Router} from '@angular/router';
 import {UtilityService} from '../../../core/services/utility.service';
-import {Overlay} from '@angular/cdk/overlay';
-import {LogInModalComponent} from '../../modals/log-in-modal/log-in-modal.component';
-import {MatDialog} from '@angular/material/dialog';
 import {UserModel} from '../../../core/models/user.model';
+import {AuthService} from '../../../core/services/auth.service';
+import {Subscription} from 'rxjs';
+import {FormControl} from '@angular/forms';
 
 
 @Component({
@@ -14,20 +14,32 @@ import {UserModel} from '../../../core/models/user.model';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
-
+export class HeaderComponent implements OnInit, OnDestroy {
+  displayLoginModal = false;
   public navLinks: NavModel[];
   public display: boolean;
   public user: UserModel;
+  isLoggedIn = false;
+  subscription: Subscription;
+  search = new FormControl();
+  isSearching = false;
+
   constructor(public translateService: TranslateService,
               public router: Router,
               private utilityService: UtilityService,
-              private overlay: Overlay,
-              private dialog: MatDialog) {
+              private authService: AuthService) {
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   ngOnInit(): void {
     this.initNavLinks();
+    this.subscription = this.authService.isLoggedIn.subscribe(value => {
+        this.isLoggedIn = value;
+      }
+    );
   }
 
   /** init navbar links */
@@ -56,12 +68,36 @@ export class HeaderComponent implements OnInit {
     this.utilityService.setDisplay(this.display);
   }
 
+  onSelectLang(lang: string) {
+    this.translateService.use(lang);
+    sessionStorage.setItem('lang', lang);
+  }
+
+
   public onOpenLogInModal() {
     // const scrollStrategy = this.overlay.scrollStrategies.reposition();
-    this.dialog.open(LogInModalComponent, {
-      autoFocus: false, disableClose: true,
-      data: this.user
-    });
+    this.displayLoginModal = !this.displayLoginModal;
+    this.router.navigate(['auth']);
+    // this.dialog.open(LogInModalComponent, {
+    //   autoFocus: false, disableClose: true,
+    //   data: this.user,
+    //   width: '350px',
+    //   height: '350px'
+    // });
     // document.body.style.overflowY = 'hidden';
+  }
+
+  closeModal(isLoggin: boolean): void {
+    console.log(isLoggin);
+    this.displayLoginModal = isLoggin;
+  }
+
+  onLogout(): void {
+    this.authService.logout();
+    this.router.navigate(['home']);
+  }
+
+  onSearchAviaDestination(value: string): void {
+    console.log(value);
   }
 }

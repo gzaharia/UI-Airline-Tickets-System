@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Departure} from '../../../core/models/departure.model';
+import {SearchFlightService} from '../../../core/services/search-flight.service';
 
 @Component({
   selector: 'app-search-flight',
@@ -7,36 +9,50 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./search-flight.component.scss']
 })
 export class SearchFlightComponent implements OnInit {
-
   public departureForm: FormGroup;
-  constructor(private readonly formBuilder: FormBuilder) { 
+
+  constructor(
+    private readonly formBuilder: FormBuilder,
+    private readonly sfService: SearchFlightService
+  ) {
 
     this.initDepartureForm();
   }
 
-  get oneWayValue(): boolean{
+  get oneWayValue(): boolean {
     return this.departureForm.get('oneWay').value;
   }
 
   ngOnInit(): void {
   }
-  private initDepartureForm():void{
-    this.departureForm= this.formBuilder.group({
+
+  private initDepartureForm(): void {
+    this.departureForm = this.formBuilder.group({
       fromDestination: [null],
       toDestination: [null],
-      fromDate: [null, Validators.compose([Validators.required]) ],
+      fromDate: [null, Validators.compose([Validators.required])],
       toDate: [null],
       passengers: [null],
-      oneWay:[true]
+      oneWay: [true]
     });
   }
-  public onGetOneWayValue(isChecked:boolean):void{
+
+  public onGetOneWayValue(isChecked: boolean): void {
     this.departureForm.get('oneWay').setValue(isChecked);
     console.log(this.oneWayValue);
-    
+
   }
-  public onSubmit():void{
-    console.log(this.departureForm.value);
+
+  public onSubmit(): void {
+    const departure = {
+      fromDate: this.departureForm.value.fromDate,
+      fromDestination: this.departureForm.value.fromDestination,
+      oneWay: this.departureForm.value.oneWay,
+      passengers: this.departureForm.value.passengers,
+      toDate: this.departureForm.value.toDate,
+      toDestination: this.departureForm.value.toDestination,
+    } as Departure;
+    this.sfService.searchFlight(departure);
   }
 
 }

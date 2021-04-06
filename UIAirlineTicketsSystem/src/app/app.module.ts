@@ -4,10 +4,17 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {SharedModule} from './shared/shared.module';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateLoader, TranslateModule, TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HomeComponent} from './modules/home/home.component';
+import {AboutComponent} from './modules/about/about.component';
+import {ServicesComponent} from './modules/services/services.component';
+import {ContactsComponent} from './modules/contacts/contacts.component';
+import {FaqComponent} from './modules/faq/faq.component';
+import {JwtInterceptor} from './core/interceptors/jwt.interceptor';
+import {AdminPortalModule} from './modules/admin-portal/admin-portal.module';
 
 function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -15,7 +22,12 @@ function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    AboutComponent,
+    ServicesComponent,
+    ContactsComponent,
+    FaqComponent
   ],
   imports: [
     BrowserModule,
@@ -29,11 +41,16 @@ function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AdminPortalModule
   ],
   providers: [
     TranslatePipe,
-    TranslateService],
+    TranslateService,
+    {
+      provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true
+    }
+  ],
 
   bootstrap: [AppComponent]
 })
