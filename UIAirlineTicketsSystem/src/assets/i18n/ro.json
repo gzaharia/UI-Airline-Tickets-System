@@ -20,5 +20,23 @@
       "2": "REGULAMENTUL DESPRE FURNIZAREA SERVICIILOR",
       "3": "POLITICA DE CONFIDENTIALITATE"
     }
+  },
+  "flight-search": {
+    "flight-question": "UNDE VREȚI",
+    "flight-question-bold": "SĂ MERGEȚI?",
+    "from": "De la ",
+    "to": "Către",
+    "departure-date": "Data de plecare",
+    "return-date": "Data de întoarcere",
+    "passengers": "Pasageri",
+    "one-way": "Într-o direcție",
+    "round-trip": "Tur-Retur",
+    "book-now": "Caută zbor",
+    "placeholder": {
+      "from": "Chisinau",
+      "to": "Berlin, Germany",
+      "date": "01-01-2021",
+      "passenger": "1 Adult"
+    }
   }
 }

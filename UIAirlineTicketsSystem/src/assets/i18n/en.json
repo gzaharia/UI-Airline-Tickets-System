@@ -20,5 +20,23 @@
       "2": "REGULATION ON THE PROVISION OF SERVICES",
       "3": "PRIVACY POLICY"
     }
+  },
+  "flight-search": {
+    "flight-question": "WHERE WOULD YOU",
+    "flight-question-bold": "LIKE TO GO?",
+    "from": "From",
+    "to": "To",
+    "departure-date": "Departure date",
+    "return-date": "Return date",
+    "passengers": "Passengers",
+    "one-way": "One way",
+    "round-trip": "Round trip",
+    "book-now": "Book Now",
+    "placeholder": {
+      "from": "Chisinau",
+      "to": "Berlin, Germany",
+      "date": "01-01-2021",
+      "passenger": "1 Adult"
+    }
   }
 }
