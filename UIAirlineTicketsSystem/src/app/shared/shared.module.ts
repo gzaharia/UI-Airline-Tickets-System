@@ -15,10 +15,12 @@ import { LogInModalComponent } from './modals/log-in-modal/log-in-modal.componen
 import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.component';
+import { ToastComponent } from './components/toast/toast.component';
+import { SearchComponent } from './components/search/search.component';
 
 
 @NgModule({
-  declarations: [FooterComponent, HeaderComponent, TransformPipe, SearchFlightComponent, BasicCalendarComponent, SelectDateModalComponent, LogInModalComponent, AdminSidebarComponent],
+  declarations: [FooterComponent, HeaderComponent, TransformPipe, SearchFlightComponent, BasicCalendarComponent, SelectDateModalComponent, LogInModalComponent, AdminSidebarComponent, ToastComponent, SearchComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -30,13 +32,14 @@ import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.
     MatDialogModule,
     MatButtonModule
   ],
-  exports: [
-    FooterComponent,
-    HeaderComponent,
-    TransformPipe,
-    SearchFlightComponent,
-    LogInModalComponent
-  ],
+    exports: [
+        FooterComponent,
+        HeaderComponent,
+        TransformPipe,
+        SearchFlightComponent,
+        LogInModalComponent,
+        ToastComponent
+    ],
   entryComponents: [LogInModalComponent],
   providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
   schemas: [

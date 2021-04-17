@@ -15,6 +15,7 @@ import {ContactsComponent} from './modules/contacts/contacts.component';
 import {FaqComponent} from './modules/faq/faq.component';
 import {JwtInterceptor} from './core/interceptors/jwt.interceptor';
 import {AdminPortalModule} from './modules/admin-portal/admin-portal.module';
+import {MessageService} from 'primeng/api';
 
 function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -49,7 +50,8 @@ function HttpLoaderFactory(http: HttpClient) {
     TranslateService,
     {
       provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true
-    }
+    },
+    MessageService
   ],
 
   bootstrap: [AppComponent]

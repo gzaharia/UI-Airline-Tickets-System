@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Departure} from '../../../core/models/departure.model';
 import {SearchFlightService} from '../../../core/services/search-flight.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-search-flight',
@@ -13,7 +14,9 @@ export class SearchFlightComponent implements OnInit {
 
   constructor(
     private readonly formBuilder: FormBuilder,
-    private readonly sfService: SearchFlightService
+    private readonly sfService: SearchFlightService,
+    private readonly router: Router,
+    private readonly route: ActivatedRoute
   ) {
 
     this.initDepartureForm();
@@ -52,7 +55,7 @@ export class SearchFlightComponent implements OnInit {
       toDate: this.departureForm.value.toDate,
       toDestination: this.departureForm.value.toDestination,
     } as Departure;
-    this.sfService.searchFlight(departure);
+    this.router.navigate(['search'], {relativeTo: this.route, state: {data: departure}});
   }
 
 }

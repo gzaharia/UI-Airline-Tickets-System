@@ -1,24 +1,25 @@
-<div class="row">
-  <div class="col-xs-2" style="height: 300px; float: left; padding-left: 40px">
+<div class="row" style="padding-top: 20px">
+  <div class="col-xs-2 first-div">
     <div class="container">
       <ul>
         <li>
-          <button class="custom-button" routerLink="./airports"> Airports</button>
+          <button class="custom-button" routerLink="./airports/overview"> Airports</button>
         </li>
         <li>
-          <button class="custom-button" routerLink="./flights">Flights</button>
+          <button class="custom-button" routerLink="./flights/overview">Flights</button>
         </li>
         <li>
-          <button class="custom-button" routerLink="./tickets">Tickets</button>
+          <button class="custom-button" routerLink="./tickets/overview">Tickets</button>
         </li>
       </ul>
     </div>
   </div>
-  <div class="col-xs-2" style="width: 100px">
+  <div class="col-xs-2 space">
   </div>
-  <div class="col-xs-10" style="height: 300px">
+  <div class="col-10 second-div">
     <div class="container">
       <router-outlet></router-outlet>
     </div>
   </div>
 </div>
+

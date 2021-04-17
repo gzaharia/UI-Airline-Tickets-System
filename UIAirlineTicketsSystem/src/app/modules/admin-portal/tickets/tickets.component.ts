@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-tickets',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TicketsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private readonly router: Router,
+              private readonly  route: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
+    this.router.navigate(['overview'], {relativeTo: this.route});
   }
 
 }

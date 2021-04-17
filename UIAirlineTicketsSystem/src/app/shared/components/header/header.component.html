@@ -17,14 +17,17 @@
         <li class="no-underline">
           <input
             *ngIf="isSearching"
-            name="search"
-            ngModel
+            [(ngModel)]="search"
             style="width: 110px"
-            (blur)="isSearching = !isSearching"
-            (keyup)="onSearchAviaDestination($event.target.value)">
+            placeholder="Search flight">
           <i
-            *ngIf="!isSearching"
             class="fas fa-search"
+            *ngIf="isSearching && search.length > 0"
+            (click)="onSearchAviaDestination()"
+            style="padding-left: 5px"></i>
+          <i
+            class="fas fa-search"
+            *ngIf="!isSearching"
             (click)="isSearching = !isSearching"></i>
         </li>
         <li class="nav-item dropdown no-underline">
@@ -37,8 +40,8 @@
 
           <div class="dropdown-menu  p-0" aria-labelledby="navbarDropdown">
             <ng-container *ngFor="let lang of translateService.getLangs()">
-<!--                 [routerLink]="generateTranslateRouteLink(lang)"-->
-<!--              [queryParamsHandling]="'preserve'"-->
+              <!--                 [routerLink]="generateTranslateRouteLink(lang)"-->
+              <!--              [queryParamsHandling]="'preserve'"-->
               <a class="dropdown-item text-center"
                  (click)="onSelectLang(lang)"
                  *ngIf="translateService.currentLang !== lang">{{lang | transform}}
@@ -48,6 +51,8 @@
         </li>
         <li (click)="onOpenLogInModal()" *ngIf="!isLoggedIn"><i class="fas fa-sign-in-alt"></i></li>
         <li (click)="onLogout()" *ngIf="isLoggedIn"><i class="fas fa-sign-out-alt"></i></li>
+        <p style="padding-top: 10px" *ngIf="isAuthenticated">{{currentUser.username}}</p>
+
         <app-log-in-modal
           *ngIf="displayLoginModal"
           (closeModal)="closeModal($event)">
@@ -56,4 +61,5 @@
     </div>
   </div>
 </div>
+
 

@@ -7,6 +7,7 @@ import {UserModel} from '../../../core/models/user.model';
 import {AuthService} from '../../../core/services/auth.service';
 import {Subscription} from 'rxjs';
 import {FormControl} from '@angular/forms';
+import {debounce, debounceTime} from "rxjs/operators";
 
 
 @Component({
@@ -21,13 +22,25 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public user: UserModel;
   isLoggedIn = false;
   subscription: Subscription;
-  search = new FormControl();
+  search = '';
   isSearching = false;
+  public currentUser: UserModel;
+  public isAuthenticated: boolean;
+  public isAdmin: boolean;
 
   constructor(public translateService: TranslateService,
               public router: Router,
               private utilityService: UtilityService,
               private authService: AuthService) {
+    this.authService.currentUser$.subscribe((response: UserModel) => {
+      this.currentUser = response;
+      this.isAuthenticated = !!this.currentUser;
+      if (this.currentUser) {
+        this.currentUser.authorities.forEach((item) => {
+          this.isAdmin = item.authority === 'ROLE_ADMIN';
+        });
+      }
+    });
   }
 
   ngOnDestroy(): void {
@@ -97,7 +110,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.router.navigate(['home']);
   }
 
-  onSearchAviaDestination(value: string): void {
-    console.log(value);
+  onSearchAviaDestination(): void {
+    this.isSearching = !this.isSearching;
+    console.log(this.search);
+    this.router.navigate(['search'], {state: {data: this.search}});
+    this.search = '';
   }
 }

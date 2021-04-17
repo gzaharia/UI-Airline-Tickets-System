@@ -9,7 +9,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class AdminPortalComponent implements OnInit {
 
 
-  constructor(public readonly route: ActivatedRoute) {
+  constructor(public readonly route: ActivatedRoute,
+              public readonly router: Router) {
   }
 
   ngOnInit(): void {

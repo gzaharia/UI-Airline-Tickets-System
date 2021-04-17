@@ -11,10 +11,6 @@ import {TicketsComponent} from './tickets/tickets.component';
 import {TicketCreateComponent} from './tickets/ticket-create/ticket-create.component';
 import {TicketTableComponent} from './tickets/ticket-table/ticket-table.component';
 import {TicketViewComponent} from './tickets/ticket-view/ticket-view.component';
-import {AirportsComponent} from './airports/airports.component';
-import {AirportTableComponent} from './airports/airport-table/airport-table.component';
-import {AirportCreateComponent} from './airports/airport-create/airport-create.component';
-import {AirportViewComponent} from './airports/airport-view/airport-view.component';
 
 const routes: Routes = [
   {
@@ -24,35 +20,23 @@ const routes: Routes = [
     children: [
       {
         path: 'airports',
-        component: AirportTableComponent
+        loadChildren: () => import('./airports/airports.module').then(m => m.AirportsModule)
       },
       {
         path: 'flights',
-        component: FlightTableComponent
+        loadChildren: () => import('./flights/flights.module').then(m => m.FlightsModule)
       },
       {
         path: 'tickets',
-        component: TicketTableComponent
-      }
+        loadChildren: () => import('./tickets/tickets.module').then(m => m.TicketsModule)
+      },
     ]
   }
 ];
 
 @NgModule({
   declarations: [
-    AdminPortalComponent,
-    FlightsComponent,
-    FlightTableComponent,
-    FlightCreateComponent,
-    FlightViewComponent,
-    TicketsComponent,
-    TicketCreateComponent,
-    TicketTableComponent,
-    TicketViewComponent,
-    AirportsComponent,
-    AirportTableComponent,
-    AirportCreateComponent,
-    AirportViewComponent
+    AdminPortalComponent
   ],
   imports: [
     SharedModule,
