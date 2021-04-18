@@ -4,6 +4,7 @@ import {UserModel} from '../models/user.model';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
 import {map} from 'rxjs/operators';
+import {ToastService} from './toast.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class AuthService {
   isLoggedIn = new BehaviorSubject<boolean>(false);
   private tokenExpiratationTimer: any;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private readonly toastService: ToastService) {
     this.currentUserSubject = new BehaviorSubject<UserModel>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser$ = this.currentUserSubject.asObservable();
     this.userId = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('userId')));
@@ -57,6 +59,11 @@ export class AuthService {
     if (this.tokenExpiratationTimer) {
       clearTimeout(this.tokenExpiratationTimer);
     }
+    this.toastService.add({
+      type: 'success',
+      title: 'You logged out from admin successfully',
+      message: 'Good luck !'
+    });
     this.tokenExpiratationTimer = null;
   }
 

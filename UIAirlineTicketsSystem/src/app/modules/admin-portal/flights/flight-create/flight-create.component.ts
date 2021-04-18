@@ -57,10 +57,11 @@ export class FlightCreateComponent implements OnInit {
   }
 
   public onEditForm(): void {
+    console.log(this.flight);
     this.form = this.formBuilder.group({
       number: [this.flight.number, Validators.required],
-      arrivalDate: [this.flight.arrivalDate, Validators.required],
-      departureDate: [this.flight.departureDate, Validators.required],
+      arrivalDate: [new Date(this.flight.arrivalDate), Validators.required],
+      departureDate: [new Date(this.flight.departureDate), Validators.required],
       arrivalAirportId: [this.flight.arrivalAirportId, Validators.required],
       departureAirportId: [this.flight.departureAirportId, Validators.required]
     });
