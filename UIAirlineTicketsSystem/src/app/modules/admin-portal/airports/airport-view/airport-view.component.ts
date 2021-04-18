@@ -56,7 +56,6 @@ export class AirportViewComponent implements OnInit {
 
   onSubmit() {
     this.airportService.updateAirport(this.updatedObject.id, this.form.value).subscribe((airport) => {
-      console.log(airport);
       this.form.get('name').setValue(airport.name);
       this.form.get('city').setValue(airport.city);
       this.form.get('code').setValue(airport.code);

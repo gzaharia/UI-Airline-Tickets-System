@@ -8,29 +8,29 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Number</th>
-        <th scope="col">Departure date</th>
         <th scope="col">Arrival date</th>
+        <th scope="col">Departure date</th>
         <th scope="col"></th>
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <th scope="row">...</th>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
+      <tr *ngFor="let flight of (flights$ | async); let i=index;">
+        <th scope="row">{{flight.id}}</th>
+        <td>{{flight.number}}</td>
+        <td>{{flight.arrivalDate}}</td>
+        <td>{{flight.departureDate}}</td>
         <td class="crud">
           <div class="icons row justify-content-center no-gutters">
             <div class="read">
-              <i class="fas fa-book-open" (click)="onView('id')"></i>
+              <i class="fas fa-book-open" (click)="onView(flight.id)"></i>
             </div>
 
             <div class="modify">
-              <i class="fas fa-edit" (click)="onEdit('id')"></i>
+              <i class="fas fa-edit" (click)="onEdit(flight.id)"></i>
             </div>
 
             <div class="delete">
-              <i class="fas fa-trash-alt" (click)="onDelete('id')"></i>
+              <i class="fas fa-trash-alt" (click)="onDelete(flight.id)"></i>
             </div>
           </div>
         </td>

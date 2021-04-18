@@ -6,6 +6,10 @@ import {FlightTableComponent} from './flight-table/flight-table.component';
 import {FlightCreateComponent} from './flight-create/flight-create.component';
 import {FlightViewComponent} from './flight-view/flight-view.component';
 import {SharedModule} from '../../../shared/shared.module';
+import {ReactiveFormsModule} from '@angular/forms';
+import {CalendarModule} from 'primeng/calendar';
+import {TranslateModule} from '@ngx-translate/core';
+import {MatSelectModule} from '@angular/material/select';
 
 const routes: Routes = [
   {
@@ -43,7 +47,11 @@ const routes: Routes = [
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ReactiveFormsModule,
+    CalendarModule,
+    TranslateModule,
+    MatSelectModule
   ]
 })
 
