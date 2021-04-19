@@ -61,6 +61,7 @@
               <!--              [queryParamsHandling]="'preserve'"-->
               <a class="dropdown-item text-center" (click)="onOpenLogInModal()" *ngIf="!isAuthenticated"> log in</a>
               <a class="dropdown-item text-center" (click)="onLogout()" *ngIf="isAuthenticated"> log out</a>
+              <a class="dropdown-item text-center" (click)="onOpenAdminDashboard()" *ngIf="isAuthenticated"> dashboard</a>
             </ng-container>
           </div>
         </li>

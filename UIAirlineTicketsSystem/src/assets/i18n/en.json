@@ -29,6 +29,7 @@
     "departure-date": "Departure date",
     "return-date": "Return date",
     "passengers": "Passengers",
+    "ticketPrice": "Ticket price",
     "one-way": "One way",
     "round-trip": "Round trip",
     "book-now": "Book Now",
@@ -36,7 +37,8 @@
       "from": "Chisinau",
       "to": "Berlin, Germany",
       "date": "01-01-2021",
-      "passenger": "1 Adult"
+      "passenger": "1 Adult",
+      "ticketPrice": "Ticket price"
     }
   },
   "about":{

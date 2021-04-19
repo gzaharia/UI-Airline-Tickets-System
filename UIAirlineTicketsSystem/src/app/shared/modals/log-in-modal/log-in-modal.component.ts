@@ -29,7 +29,7 @@ export class LogInModalComponent {
 
   public onLogin(): void {
     console.log(this.formLogin.value);
-    this.authService.login(this.formLogin.value).pipe(first()).subscribe(data => {
+    this.authService.login(this.formLogin.value).subscribe(data => {
       this.toastService.add({
         type: 'success',
         title: 'You logged in as admin successfully',

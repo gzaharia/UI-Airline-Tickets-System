@@ -29,14 +29,16 @@
     "departure-date": "Дата Вылета",
     "return-date": "Дата Возврата",
     "passengers": "Пассажиры",
+    "ticketPrice": "Стоимость билета",
     "one-way": "В одну сторону",
     "round-trip": "Туда и обратно",
     "book-now": "Поиск рейсов",
     "placeholder": {
-      "from": "Chiinau",
+      "from": "Chisinau",
       "to": "Berlin, Germany",
       "date": "01-01-2021",
-      "passenger": "1 Adult"
+      "passenger": "1 Adult",
+      "ticketPrice": "Стоимость билета"
     }
   },
   "about":{

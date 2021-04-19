@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {NavModel} from '../../../core/models/navModel';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UtilityService} from '../../../core/services/utility.service';
 import {UserModel} from '../../../core/models/user.model';
 import {AuthService} from '../../../core/services/auth.service';
@@ -31,7 +31,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
               public router: Router,
               private utilityService: UtilityService,
               private authService: AuthService,
-              private readonly toastService: ToastService) {
+              private readonly toastService: ToastService,
+              private readonly route: ActivatedRoute) {
     this.authService.currentUser$.subscribe((response: UserModel) => {
       this.currentUser = response;
       this.isAuthenticated = !!this.currentUser;
@@ -99,16 +100,18 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onLogout(): void {
     this.authService.logout();
-    this.router.navigate(['home']);
+    this.router.navigate(['']);
 
   }
 
-  onSearchAviaDestination()
-    :
-    void {
+  onSearchAviaDestination(): void {
     this.isSearching = !this.isSearching;
     console.log(this.search);
     this.router.navigate(['search'], {state: {data: this.search}});
     this.search = '';
+  }
+
+  onOpenAdminDashboard() {
+    this.router.navigate(['../../admin-portal/airports/overview'], {relativeTo: this.route});
   }
 }

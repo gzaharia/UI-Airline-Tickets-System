@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {UserModel} from '../models/user.model';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
-import {map} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 import {ToastService} from './toast.service';
 
 @Injectable({
@@ -39,11 +39,11 @@ export class AuthService {
   /** login    */
   public login(body): Observable<UserModel> {
     return this.http.post<UserModel>(`${this.apiUrl}${this.endpointUrl}auth/sign-in`, body)
-      .pipe(map(user => {
+      .pipe(tap(user => {
         localStorage.setItem('currentUser', JSON.stringify(user));
         localStorage.setItem('jwt_token', JSON.stringify(user.token));
         this.currentUserSubject.next(user);
-        this.isLoggedIn.next(true);
+        // this.isLoggedIn.next(true);
         this.autoLogout(1000 * 600);
         // this.getUserByUsername();
         return user;
