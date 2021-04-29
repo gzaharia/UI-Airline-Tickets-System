@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080/',
+  apiUrl: 'https://dream4trip-api.herokuapp.com/',
   endpointUrl: 'v1/ats/',
   numberOfMonths: 6
 };
